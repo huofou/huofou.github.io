@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>或否</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+  <header class="site-header navfixed-false">
+
+  <div class="container">
+      <h1><a href="/" title="或否"><span class="octicon octicon-mark-github"></span> 或否</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/blog/"  class=" site-header-nav-item hvr-underline-from-center" title="Blog">Blog</a>
+        
+              
+              <a href="/guestbook/"  class=" site-header-nav-item hvr-underline-from-center" title="Guestbook">Guestbook</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+    <section class="collection-head geopattern" data-pattern-id="GitHub+Hexo配置系列教程-GitHub配置(二)" >
+
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">GitHub+Hexo配置系列教程-GitHub配置(二)</h1>
+            <div class="collection-info">
+             
+                <span class="meta-info">
+                    
+                            <span class="octicon octicon-calendar"></span>
+                            <time datetime="2016-08-23T02:41:06.000Z" itemprop="datePublished">2016-08-23</time>
+                    
+                </span>
+             
+            </div>
+        </div>
+    </div>
+</section>
+	
+
+    <section class="container">
+
+    <div class="columns">
+        <div class="column three-fourths" >
+            <article class="article-content article-entry">
+                <p>上一篇中我们介绍了如何搭建Hexo本地博客,现在我们开始配置GitHub并进行关联Hexo</p>
+<h1 id="GitHub端操作"><a href="#GitHub端操作" class="headerlink" title="GitHub端操作"></a>GitHub端操作</h1><p><strong>注册GitHub</strong></p>
+<p>在此处进行注册,操作比较简单,再次就不多做赘述,不熟悉的百度查看一下教程.</p>
+<p><strong>创建Repository</strong></p>
+<p>在自己GitHub主页点击右上角,创建Repository </p>
+<a id="more"></a>
+<p><img src="/img/2016/08/23/1.png" alt=""></p>
+<p>进入创建界面后,注意:<strong>名字一定要与用户名一致</strong>, 比如我的用户名是 bentoule,创建的Respository一定要是bentoule.github.io<br><img src="/img/2016/08/23/2.png" alt=""></p>
+<p>然后点击<strong>Create repository</strong>按钮,然后进入到该respository界面,点击右边Settings, 拉到最下方,找到GitHub Pages模块,点击 <strong>Launch automatic page generator</strong>,让GitHub生成GitHubPager<br><img src="/img/2016/08/23/3.png" alt=""></p>
+<p>然后进入下一页,点击页面右下角绿色框按钮<strong> Continue to layouts</strong>进入下一页<br><img src="/img/2016/08/23/4.png" alt=""></p>
+<p>下一个界面是选择主题,但选择哪个无所谓,因为后面将要与Hexo关联,站点所有内容都将被Hexo博客所替换,所以直接点击<strong> Publish page </strong><br><img src="/img/2016/08/23/5.png" alt=""></p>
+<p>然后,就可以进入到该界面,即代表设置完成,访问bentoule.github.io即可看到自己独立的该域名网站.<br><img src="/img/2016/08/23/6.png" alt=""></p>
+<p>此时点击Settings进入即可看到如下提示:Your sit is published at <a href="http://bentoule.github.io" target="_blank" rel="external">http://bentoule.github.io</a><br><img src="/img/2016/08/23/7.png" alt=""></p>
+<h1 id="配置SSH-Keys"><a href="#配置SSH-Keys" class="headerlink" title="配置SSH Keys"></a>配置SSH Keys</h1><p>SSH密钥是一个用来识别值得信赖的电脑在进行GitHub一些操作时,不用输入密码。用户可以生成一个SSH密钥，并按照本节所述的方法将公共密钥添加到你的GitHub帐户。</p>
+<p>我们建议你定期检查SSH密钥列表，并删除任何一个长时间没有使用的秘钥.</p>
+<blockquote>
+<p>小贴士:如果你安装的有GitHub的桌面版 ，你可以用它来克隆库而不是进行SSH密钥处理。它还配备了Git的Bash的工具，这是在Windows上运行的git命令的首选方式。<br>检测电脑中是否已有SSH 秘钥</p>
+</blockquote>
+<p>在你生成SSH秘钥之前,如果你有任意一个SSH秘钥,你都要检测一下;</p>
+<p><strong>检测步骤:</strong></p>
+<ul>
+<li>在任意目录右键,选择 Git Bash</li>
+<li>输入 ls -al ~/.ssh 命令查看是否存在SSH秘钥 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls -al ~/.ssh </div><div class="line"><span class="comment"># Lists the files in your .ssh directory, if they exist</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>如果你看到有公共的SSH秘钥已经存在的话,请检测SSH列表的路径;</p>
+<p> 默认情况下,公共秘钥的文件名是下列之一:</p>
+</li>
+<li><p>id_dsa.pub</p>
+</li>
+<li>id_ecdsa.pub</li>
+<li>id_ecdsa.pub</li>
+<li>id_ecdsa.pub</li>
+</ul>
+<p>如果没有一个现有的公共和私有密钥，或者不希望使用任何可用的SSH秘钥来连接到GitHub上，请生成一个新的SSH密钥。</p>
+<p>如果你看到列出现有的公共和私有密钥（例如id_rsa.pub和id_rsa ），你想使用连接到GitHub上，你可以将你的SSH密钥放到ssh-agent(下面会写到) .</p>
+<blockquote>
+<p>小贴士:如果你看到的〜/ .ssh不存在或者错误，不要担心！我们将创建它，并生成一个新的SSH密钥</p>
+</blockquote>
+<p><strong>生成新的SSH密钥并将其添加到ssh-agent中</strong></p>
+<ul>
+<li>在任意目录右键,选择Git Bash</li>
+<li>输入ssh-keygen -t rsa -b 4096 -C “your_email@example.com” (将邮箱替换为你自己的地址)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"your_email@example.com"</span></div><div class="line"><span class="comment"># Creates a new ssh key, using the provided email as a label</span></div><div class="line"><span class="comment">#Generating public/private rsa key pair.</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>当你提示“输入要保存密钥的文件”，然后按Enter键。接受默认文件位置。<br>Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]</p>
+</li>
+<li><p>在提示符下，键入一个安全密码(可以为空)。有关详细信息，请参阅“使用SSH密钥口令”一节。<br>Enter passphrase (empty for no passphrase): [Type a passphrase]<br>Enter same passphrase again: [Type passphrase again]</p>
+</li>
+<li><p>将ssh秘钥添加到 ssh-agent,在任意目录右键,选择Git Bash后输入命令确保ssh-agent的启用</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># start the ssh-agent in the background</span></div><div class="line">$ <span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></div><div class="line"><span class="comment"># Agent pid 59566</span></div></pre></td></tr></table></figure>
+<ul>
+<li>添加你的SSH密钥到ssh-agent 。如果你使用现有的SSH密钥，而不是生成新的SSH密钥，你需要替换现有的私有密钥文件的名称，以取代id_rsa的命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+<p><strong>添加新的SSH密钥到你的帐户GitHub中</strong></p>
+<p>要配置GitHub的帐户需要使用新的（或现有的） SSH密钥，你还需要将其添加到你的帐户GitHub中。</p>
+<p><strong>复制SSH密钥到剪贴板</strong></p>
+<blockquote>
+<p>小贴士:如果你的SSH密钥文件具有与示例代码不同的名称，请修改文件名，以符合当前的设置。当复制你的秘钥时，不添加任何新行或空格。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ clip &lt; ~/.ssh/id_rsa.pub</div><div class="line"><span class="comment"># Copies the contents of the id_rsa.pub file to your clipboard</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>小贴士:如果clip命令没有执行，你可以找到隐藏的.ssh文件夹中，打开你喜欢的文本编辑器文件，并将其复制到剪贴板,一般是在C:\Users\yourname.ssh文件夹下的id_rsa.pub文件中,使用文本文档打开后复制内容即可</p>
+</blockquote>
+<p><strong>2.在GitHub任何界面中,点击右上角个人资料照片,选择Settings </strong></p>
+<p>未完待续…..</p>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component"></div>
+
+<script src="/js/share.min.js"></script>
+                </div>    
+            
+            
+                <div class="comment">
+                    
+<div class="ds-thread" data-thread-key="GitHub-Hexo配置系列教程-GitHub配置-二" data-title="GitHub+Hexo配置系列教程-GitHub配置(二)" data-url="http://yoursite.com/2016/08/23/GitHub-Hexo配置系列教程-GitHub配置-二/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+                </div>
+            
+        </div>
+        <div class="column one-fourth">
+            
+                <h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GitHub端操作"><span class="toc-text">GitHub端操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置SSH-Keys"><span class="toc-text">配置SSH Keys</span></a></li></ol>
+	</section>
+</div>
+            
+        </div>
+       
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/yumemor.github.io" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+             
+              
+              <li>
+                <a href="/"  title="Home">Home</a>
+              </li>
+            
+              
+              <li>
+                <a href="/open-source/"  title="Open-Source">Open-Source</a>
+              </li>
+            
+              
+              <li>
+                <a href="/blog/"  title="Blog">Blog</a>
+              </li>
+            
+              
+              <li>
+                <a href="/guestbook/"  title="Guestbook">Guestbook</a>
+              </li>
+            
+
+        </ul>
+
+    </div>
+</footer>
+
+		
+		<script src="/js/typer.js"></script>
+
+		<script src="/js/geopattern.js"></script>
+
+		<script src="/js/index.js"></script>
+
+		 <script src="/js/popular_repo.js"></script> 
+
+	</body>
+</html>
